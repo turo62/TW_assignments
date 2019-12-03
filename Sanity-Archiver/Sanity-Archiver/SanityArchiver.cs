@@ -20,7 +20,7 @@ namespace Sanity_Archiver
         readonly private List<FileInfo> myFiles = new List<FileInfo>();
         private DirectoryInfo myDirInfo;
         private FileInfo mySelection;
-        //Compressor myCompressor = new Compressor();
+        Cypherer myCypherer = new Cypherer();
 
         public SanityArchiver()
         {
@@ -113,6 +113,8 @@ namespace Sanity_Archiver
 
         private List<FileInfo> ListFiles(DirectoryInfo nodeDirInfo)
         {
+            listView1.Items.Clear();
+
             foreach (FileInfo file in nodeDirInfo.GetFiles())
             {
                 ListViewItem item = new ListViewItem(file.Name, 1);
@@ -131,7 +133,7 @@ namespace Sanity_Archiver
 
         private void GetPathByFileName(string name)
         {
-            foreach (FileInfo file in ListFiles(myDirInfo))
+            foreach (FileInfo file in myDirInfo.GetFiles())
             {
                 if (file.Name.Equals(name))
                 {
@@ -142,11 +144,12 @@ namespace Sanity_Archiver
 
         private void EncrypteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bool crypted = false;
             try
             {
                 string fileName = textBox3.Text;
                 GetPathByFileName(fileName);
-                File.Encrypt(mySelection.FullName);
+                myCypherer.CompleteCrypt(mySelection.FullName, crypted);
             }
             catch (IOException ex)
             {
@@ -157,8 +160,18 @@ namespace Sanity_Archiver
 
         private void DecrypteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string fileName = e.ToString();
-            File.Decrypt(fileName);
+            bool crypted = true;
+
+            try
+            {
+                string fileName = textBox3.Text;
+                GetPathByFileName(fileName);
+                myCypherer.CompleteCrypt(mySelection.FullName, crypted);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void ListView1_MouseClick(object sender, MouseEventArgs e)
@@ -188,7 +201,7 @@ namespace Sanity_Archiver
                 string fileName = textBox3.Text;
                 GetPathByFileName(fileName);
 
-                Compressor.ArchiveFile(mySelection);
+                Compressor.CompressFile(mySelection);
             }
             catch (IOException ex)
             {
@@ -203,12 +216,14 @@ namespace Sanity_Archiver
                 string fileName = textBox3.Text;
                 GetPathByFileName(fileName);
 
-                Compressor.Decompress(mySelection);
+                Compressor.DecompressFile(mySelection);
             }
             catch (IOException ex)
             {
                 Console.WriteLine(ex.Message);
             }
+
+            ListFiles(myDirInfo);
         }
     }
 }

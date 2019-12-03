@@ -9,12 +9,12 @@ namespace Sanity_Archiver
 {
     class SizeCalculator
     {
-        readonly List<FileInfo> collectedFiles = new List<FileInfo>();
-
-        public long CalculateDirectorySize(DirectoryInfo actDirectory)
+        internal long CalculateDirectorySize(DirectoryInfo actDirectory)
         {
             long bitCalc = 0;
-            
+
+            List<FileInfo> collectedFiles = new List<FileInfo>();
+
             RecursiveAlgorithm(collectedFiles, actDirectory);
 
             foreach (FileInfo tempFile in collectedFiles)
@@ -46,7 +46,15 @@ namespace Sanity_Archiver
             {
                 foreach (FileInfo item in actDirectory.GetFiles())
                 {
-                    actFiles.Add(item);
+                    if (actFiles.Contains(item))
+                    { 
+                        continue;
+                    }
+                    else
+                    {
+                        actFiles.Add(item);
+                    }
+                    
                 }
             }
 

@@ -46,7 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cypherer.cs" />
     <Compile Include="Compressor.cs" />
+    <Compile Include="AttributeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttributeList.Designer.cs">
+      <DependentUpon>AttributeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="SizeCalculator.cs" />
     <Compile Include="SanityArchiver.cs">
       <SubType>Form</SubType>
@@ -56,6 +63,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AttributeList.resx">
+      <DependentUpon>AttributeList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

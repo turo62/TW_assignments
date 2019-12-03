@@ -11,8 +11,9 @@ namespace Sanity_Archiver
     class Compressor
     {
         readonly static DirectoryInfo homeDir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\" + "Archive");
+        internal SanityArchiver actArchiver = new SanityArchiver();
 
-        internal static void ArchiveFile(FileInfo fileName)
+        internal static void CompressFile(FileInfo fileName)
         {
             DirectoryInfo actArchive = SetActArchiveDir(fileName.FullName);
             Directory.SetCurrentDirectory(actArchive.FullName);
@@ -35,7 +36,7 @@ namespace Sanity_Archiver
             gZIP.Close(); outStream.Close(); inStream.Close();
         }
 
-        internal static void Decompress(FileInfo fileToDecompress)
+        internal static void DecompressFile(FileInfo fileToDecompress)
         {
             using (FileStream originalFileStream = fileToDecompress.OpenRead())
             {
