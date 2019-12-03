@@ -16,6 +16,7 @@ namespace Sanity_Archiver
     {
         readonly private static string PLACEHOLDER = "...";
         string[] drives;
+        static string actFile;
         readonly SizeCalculator calculateDir = new SizeCalculator();
         readonly private List<FileInfo> myFiles = new List<FileInfo>();
         private DirectoryInfo myDirInfo;
@@ -224,6 +225,22 @@ namespace Sanity_Archiver
             }
 
             ListFiles(myDirInfo);
+        }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string fileName = textBox3.Text;
+            GetPathByFileName(fileName);
+            TextDisplay myDisplay = new TextDisplay(mySelection.FullName);
+
+            this.Hide();
+            myDisplay.Closed += (s, args) => this.Close();
+            myDisplay.Show();
+        }
+
+        private void SanityArchiver_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Close();
         }
     }
 }

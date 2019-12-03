@@ -133,7 +133,7 @@
             this.changeAttributesToolStripMenuItem,
             this.openFileToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 128);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(196, 100);
             // 
             // archiveToolStripMenuItem
             // 
@@ -141,20 +141,20 @@
             this.compressToolStripMenuItem,
             this.decompressToolStripMenuItem});
             this.archiveToolStripMenuItem.Name = "archiveToolStripMenuItem";
-            this.archiveToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.archiveToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.archiveToolStripMenuItem.Text = "Archive";
             // 
             // compressToolStripMenuItem
             // 
             this.compressToolStripMenuItem.Name = "compressToolStripMenuItem";
-            this.compressToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.compressToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.compressToolStripMenuItem.Text = "Compress";
             this.compressToolStripMenuItem.Click += new System.EventHandler(this.CompressToolStripMenuItem_Click);
             // 
             // decompressToolStripMenuItem
             // 
             this.decompressToolStripMenuItem.Name = "decompressToolStripMenuItem";
-            this.decompressToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.decompressToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.decompressToolStripMenuItem.Text = "Decompress";
             this.decompressToolStripMenuItem.Click += new System.EventHandler(this.DecompressToolStripMenuItem_Click);
             // 
@@ -164,7 +164,7 @@
             this.encrypteToolStripMenuItem,
             this.decrypteToolStripMenuItem});
             this.cryptingToolStripMenuItem.Name = "cryptingToolStripMenuItem";
-            this.cryptingToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.cryptingToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.cryptingToolStripMenuItem.Text = "Crypting";
             // 
             // encrypteToolStripMenuItem
@@ -184,14 +184,15 @@
             // changeAttributesToolStripMenuItem
             // 
             this.changeAttributesToolStripMenuItem.Name = "changeAttributesToolStripMenuItem";
-            this.changeAttributesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.changeAttributesToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.changeAttributesToolStripMenuItem.Text = "Change attributes";
             // 
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.openFileToolStripMenuItem.Text = "Open file";
+            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // imageList2
             // 
@@ -261,6 +262,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "SanityArchiver";
             this.Text = "My Archiver";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SanityArchiver_FormClosing);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
