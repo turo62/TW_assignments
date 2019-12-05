@@ -14,7 +14,7 @@ namespace Sanity_Archiver
         byte[] abc;
         byte[,] table;
         byte[] fileContent;
-        byte[] keys;
+        //byte[] keys;
 
         internal void ByteGenerator()
         {

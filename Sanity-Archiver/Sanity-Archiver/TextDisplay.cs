@@ -13,7 +13,7 @@ namespace Sanity_Archiver
 {
     public partial class TextDisplay : Form
     {
-        string fileName;
+        //string fileName;
         public TextDisplay(string fileName)
         {
             InitializeComponent();

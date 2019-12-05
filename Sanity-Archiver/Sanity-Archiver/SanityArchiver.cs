@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sanity_Archiver
@@ -16,7 +9,7 @@ namespace Sanity_Archiver
     {
         readonly private static string PLACEHOLDER = "...";
         string[] drives;
-        static string actFile;
+        //static string actFile;
         readonly SizeCalculator calculateDir = new SizeCalculator();
         readonly private List<FileInfo> myFiles = new List<FileInfo>();
         private DirectoryInfo myDirInfo;
@@ -28,7 +21,7 @@ namespace Sanity_Archiver
             InitializeComponent();
             ListDrives();
         }
-        
+
         private void ListDrives()
         {
             drives = Environment.GetLogicalDrives();
@@ -108,7 +101,7 @@ namespace Sanity_Archiver
             }
 
             ListFiles(myDirInfo);
-            
+
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
@@ -156,7 +149,7 @@ namespace Sanity_Archiver
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
         }
 
         private void DecrypteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,11 +179,10 @@ namespace Sanity_Archiver
             if (e.Button == MouseButtons.Right)
             {
                 ListViewItem item = listView1.GetItemAt(e.X, e.Y);
+
                 if (item != null)
                 {
                     item.Selected = true;
-
-                    //FileInfo myFile = Path.GetFileName(item.Text);
                 }
             }
         }
@@ -204,6 +196,7 @@ namespace Sanity_Archiver
 
                 Compressor.CompressFile(mySelection);
             }
+
             catch (IOException ex)
             {
                 Console.WriteLine(ex.Message);
@@ -227,7 +220,7 @@ namespace Sanity_Archiver
             ListFiles(myDirInfo);
         }
 
-        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string fileName = textBox3.Text;
             GetPathByFileName(fileName);
