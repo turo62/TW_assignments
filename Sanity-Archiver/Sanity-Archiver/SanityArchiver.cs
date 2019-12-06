@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -15,10 +16,17 @@ namespace Sanity_Archiver
         private DirectoryInfo myDirInfo;
         private FileInfo mySelection;
         Cypherer myCypherer = new Cypherer();
+        private ListViewColumnSorter lvwColumnSorter;
 
         public SanityArchiver()
         {
             InitializeComponent();
+
+            // Create an instance of a ListView column sorter and assign it 
+            // to the ListView control.
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.listView1.ListViewItemSorter = lvwColumnSorter;
+
             ListDrives();
         }
 
@@ -107,13 +115,11 @@ namespace Sanity_Archiver
 
         private List<FileInfo> ListFiles(DirectoryInfo nodeDirInfo)
         {
-            listView1.Items.Clear();
-
             foreach (FileInfo file in nodeDirInfo.GetFiles())
             {
                 ListViewItem item = new ListViewItem(file.Name, 1);
                 ListViewItem.ListViewSubItem[] subItems = new ListViewItem.ListViewSubItem[]
-                    { new ListViewItem.ListViewSubItem(item, "File"),
+                    { new ListViewItem.ListViewSubItem(item, file.Extension.Substring(1)),
              new ListViewItem.ListViewSubItem(item,
                 file.LastAccessTime.ToShortDateString())};
 
@@ -147,7 +153,7 @@ namespace Sanity_Archiver
             }
             catch (IOException ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -164,7 +170,7 @@ namespace Sanity_Archiver
             }
             catch (IOException ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -199,7 +205,7 @@ namespace Sanity_Archiver
 
             catch (IOException ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -214,7 +220,7 @@ namespace Sanity_Archiver
             }
             catch (IOException ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
 
             ListFiles(myDirInfo);
@@ -224,7 +230,7 @@ namespace Sanity_Archiver
         {
             string fileName = textBox3.Text;
             GetPathByFileName(fileName);
-            TextDisplay myDisplay = new TextDisplay(mySelection.FullName);
+            FileOperations myDisplay = new FileOperations(mySelection.FullName);
 
             this.Hide();
             myDisplay.Closed += (s, args) => this.Close();
@@ -234,6 +240,67 @@ namespace Sanity_Archiver
         private void SanityArchiver_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Close();
+        }
+
+        private void ListView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ListViewItem item = listView1.GetItemAt(e.X, e.Y);
+
+            if (item != null && item.Selected)
+            {
+                this.listView1.DoDragDrop(this.listView1.SelectedItems, DragDropEffects.Move);
+            }           
+        }
+
+        private void ListView1_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void TreeView1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void TreeView1_DragDrop(object sender, DragEventArgs e)
+        {
+            TreeNode nodeToDropIn = this.treeView1.GetNodeAt(this.treeView1.PointToClient(new Point(e.X, e.Y)));
+
+            string myTarget = FileOperations.TargetDirPath(nodeToDropIn);
+
+            ListViewItem data = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+            if (data == null) { return; }
+            nodeToDropIn.Nodes.Add(data.ToString());
+            this.listView1.Items.Remove(data);
+
+            GetPathByFileName(data.Text);
+            string targetDir = nodeToDropIn.Text;
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listView1.Sort();
         }
     }
 }

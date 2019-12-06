@@ -1,6 +1,6 @@
 ﻿namespace Sanity_Archiver
 {
-    partial class TextDisplay
+    partial class FileOperations
     {
         /// <summary>
         /// Required designer variable.

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sanity_Archiver
 {
@@ -35,6 +36,7 @@ namespace Sanity_Archiver
             }
             catch (Exception)
             {
+                MessageBox.Show("Access forbidden to \"" + realPath + "\" directory");
                 return false;
             }
         }
@@ -42,8 +44,6 @@ namespace Sanity_Archiver
 
         private static void RecursiveAlgorithm(List<FileInfo> actFiles, DirectoryInfo actDirectory)
         {
-            if (IsAccessible(actDirectory))
-            {
                 foreach (FileInfo item in actDirectory.GetFiles())
                 {
                     if (actFiles.Contains(item))
@@ -56,11 +56,13 @@ namespace Sanity_Archiver
                     }
                     
                 }
-            }
 
             foreach (DirectoryInfo tempDir in actDirectory.GetDirectories())
             {
-                RecursiveAlgorithm(actFiles, tempDir);
+                if (IsAccessible(tempDir))
+                {
+                    RecursiveAlgorithm(actFiles, tempDir);
+                }                
             }
         }
     }

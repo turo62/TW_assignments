@@ -1,0 +1,117 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{7B452038-317C-45E6-8912-ABA6E591E3AF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>WindowsApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>NewArchiver</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".vs\Sanity-Archiver\v16\.suo" />
+    <None Include=".vs\Sanity-Archiver\v16\Server\sqlite3\db.lock" />
+    <None Include=".vs\Sanity-Archiver\v16\Server\sqlite3\storage.ide" />
+    <None Include="Sanity-Archiver\App.config" />
+    <None Include="Sanity-Archiver\bin\Debug\Sanity-Archiver.exe.config" />
+    <None Include="Sanity-Archiver\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="Sanity-Archiver\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Sanity-Archiver\obj\Debug\Sanity-Archiver.csproj.GenerateResource.cache" />
+    <None Include="Sanity-Archiver\obj\Debug\Sanity-Archiver.csprojAssemblyReference.cache" />
+    <None Include="Sanity-Archiver\Properties\Settings.settings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sanity-Archiver\AttributeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sanity-Archiver\AttributeList.Designer.cs">
+      <DependentUpon>AttributeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sanity-Archiver\Compressor.cs" />
+    <Compile Include="Sanity-Archiver\Cypherer.cs" />
+    <Compile Include="Sanity-Archiver\Program.cs" />
+    <Compile Include="Sanity-Archiver\Properties\AssemblyInfo.cs" />
+    <Compile Include="Sanity-Archiver\Properties\Resources.Designer.cs" />
+    <Compile Include="Sanity-Archiver\Properties\Settings.Designer.cs" />
+    <Compile Include="Sanity-Archiver\SanityArchiver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sanity-Archiver\SanityArchiver.Designer.cs">
+      <DependentUpon>SanityArchiver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sanity-Archiver\SizeCalculator.cs" />
+    <Compile Include="Sanity-Archiver\TextDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sanity-Archiver\TextDisplay.Designer.cs">
+      <DependentUpon>TextDisplay.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Sanity-Archiver\AttributeList.resx">
+      <DependentUpon>AttributeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sanity-Archiver\obj\Debug\Sanity_Archiver.AttributeList.resources" />
+    <EmbeddedResource Include="Sanity-Archiver\obj\Debug\Sanity_Archiver.Properties.Resources.resources" />
+    <EmbeddedResource Include="Sanity-Archiver\obj\Debug\Sanity_Archiver.SanityArchiver.resources" />
+    <EmbeddedResource Include="Sanity-Archiver\obj\Debug\Sanity_Archiver.TextDisplay.resources" />
+    <EmbeddedResource Include="Sanity-Archiver\Properties\Resources.resx" />
+    <EmbeddedResource Include="Sanity-Archiver\SanityArchiver.resx">
+      <DependentUpon>SanityArchiver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sanity-Archiver\TextDisplay.resx">
+      <DependentUpon>TextDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sanity-Archiver\bin\Debug\Sanity-Archiver.exe" />
+    <Content Include="Sanity-Archiver\bin\Debug\Sanity-Archiver.pdb" />
+    <Content Include="Sanity-Archiver\obj\Debug\Sanity-Archiver.csproj.FileListAbsolute.txt" />
+    <Content Include="Sanity-Archiver\obj\Debug\Sanity-Archiver.exe" />
+    <Content Include="Sanity-Archiver\obj\Debug\Sanity-Archiver.pdb" />
+    <Content Include="Sanity-Archiver\Sanity-Archiver.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\NewArchiver\v16\" />
+    <Folder Include="Sanity-Archiver\bin\Release\" />
+    <Folder Include="Sanity-Archiver\obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

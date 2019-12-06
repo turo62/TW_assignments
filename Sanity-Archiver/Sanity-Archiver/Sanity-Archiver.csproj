@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="Cypherer.cs" />
     <Compile Include="Compressor.cs" />
     <Compile Include="AttributeList.cs">
@@ -54,11 +55,11 @@
     <Compile Include="AttributeList.Designer.cs">
       <DependentUpon>AttributeList.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextDisplay.cs">
+    <Compile Include="FileOperations.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TextDisplay.Designer.cs">
-      <DependentUpon>TextDisplay.cs</DependentUpon>
+    <Compile Include="FileOperations.Designer.cs">
+      <DependentUpon>FileOperations.cs</DependentUpon>
     </Compile>
     <Compile Include="SizeCalculator.cs" />
     <Compile Include="SanityArchiver.cs">
@@ -84,8 +85,8 @@
     <EmbeddedResource Include="SanityArchiver.resx">
       <DependentUpon>SanityArchiver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TextDisplay.resx">
-      <DependentUpon>TextDisplay.cs</DependentUpon>
+    <EmbeddedResource Include="FileOperations.resx">
+      <DependentUpon>FileOperations.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
