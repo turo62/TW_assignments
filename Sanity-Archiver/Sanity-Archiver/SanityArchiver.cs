@@ -278,6 +278,10 @@ namespace Sanity_Archiver
                 string fileName = mySelection.FullName;
                 string destFile = System.IO.Path.Combine(myTarget, mySelection.Name);
                 System.IO.File.Copy(fileName, destFile, true);
+                if (!ModifierKeys.HasFlag(Keys.Control))
+                {
+                    System.IO.File.Delete(fileName);
+                }
             }
         }
 
