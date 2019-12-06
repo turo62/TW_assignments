@@ -255,7 +255,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 15);
             this.textBox3.TabIndex = 6;
-            this.textBox3.Visible = false;
+            this.textBox3.Visible = true;
             // 
             // SanityArchiver
             // 

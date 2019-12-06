@@ -264,17 +264,21 @@ namespace Sanity_Archiver
 
         private void TreeView1_DragDrop(object sender, DragEventArgs e)
         {
+            textBox3.Text = null;
             TreeNode nodeToDropIn = this.treeView1.GetNodeAt(this.treeView1.PointToClient(new Point(e.X, e.Y)));
+            if (nodeToDropIn == null) { return; }
 
             string myTarget = FileOperations.TargetDirPath(nodeToDropIn);
 
-            ListViewItem data = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
-            if (data == null) { return; }
-            nodeToDropIn.Nodes.Add(data.ToString());
-            this.listView1.Items.Remove(data);
-
-            GetPathByFileName(data.Text);
-            string targetDir = nodeToDropIn.Text;
+            ListView.SelectedListViewItemCollection lvi = (ListView.SelectedListViewItemCollection)e.Data.GetData("System.Windows.Forms.ListView+SelectedListViewItemCollection");
+           
+            foreach (ListViewItem file in lvi)
+            {
+                GetPathByFileName(file.Text);
+                string fileName = mySelection.FullName;
+                string destFile = System.IO.Path.Combine(myTarget, mySelection.Name);
+                System.IO.File.Copy(fileName, destFile, true);
+            }
         }
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
