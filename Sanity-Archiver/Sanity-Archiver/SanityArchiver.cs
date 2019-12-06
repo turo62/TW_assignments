@@ -276,6 +276,7 @@ namespace Sanity_Archiver
             {
                 GetPathByFileName(file.Text);
                 string fileName = mySelection.FullName;
+                MessageBox.Show(fileName);
                 string destFile = System.IO.Path.Combine(myTarget, mySelection.Name);
                 System.IO.File.Copy(fileName, destFile, true);
                 if (!ModifierKeys.HasFlag(Keys.Control))
