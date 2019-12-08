@@ -276,13 +276,24 @@ namespace Sanity_Archiver
             {
                 GetPathByFileName(file.Text);
                 string fileName = mySelection.FullName;
-                MessageBox.Show(fileName);
-                string destFile = System.IO.Path.Combine(myTarget, mySelection.Name);
-                System.IO.File.Copy(fileName, destFile, true);
-                if (!ModifierKeys.HasFlag(Keys.Control))
+
+                if (System.IO.File.Exists(fileName))
                 {
-                    System.IO.File.Delete(fileName);
-                }
+                    try
+                    {
+                        string destFile = System.IO.Path.Combine(myTarget, mySelection.Name);
+                        System.IO.File.Copy(fileName, destFile, true);
+                        if (!ModifierKeys.HasFlag(Keys.Control))
+                        {
+                            System.IO.File.Delete(fileName);
+                        }
+                    }
+                    catch (System.IO.IOException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        continue;
+                    }
+                }                
             }
         }
 
