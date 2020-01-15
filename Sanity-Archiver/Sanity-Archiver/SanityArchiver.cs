@@ -15,8 +15,8 @@ namespace Sanity_Archiver
         readonly private List<FileInfo> myFiles = new List<FileInfo>();
         private DirectoryInfo myDirInfo;
         private FileInfo mySelection;
-        Cypherer myCypherer = new Cypherer();
-        private ListViewColumnSorter lvwColumnSorter;
+        readonly Cypherer myCypherer = new Cypherer();
+        readonly private ListViewColumnSorter lvwColumnSorter;
 
         public SanityArchiver()
         {
@@ -297,7 +297,7 @@ namespace Sanity_Archiver
             }
         }
 
-        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void ListView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             // Determine if clicked column is already the column that is being sorted.
             if (e.Column == lvwColumnSorter.SortColumn)
