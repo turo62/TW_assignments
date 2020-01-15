@@ -62,11 +62,6 @@ namespace Serializer
             }
         }
 
-        private void MessageBox()
-        {
-            throw new NotImplementedException();
-        }
-
         public static Person Deserialize(int serialNum)
         {
             string input = @"C:\ForTrials\person" + serialNum + ".dat";

@@ -29,7 +29,7 @@ namespace Serializer
             txtPhone.Text = p.Phone;
         }
 
-        private void btnSave_MouseClick(object sender, MouseEventArgs e)
+        private void BtnSave_MouseClick(object sender, MouseEventArgs e)
         {
             int tempNum = GetLatestSerialNo();
             actSerNum = tempNum + 1;
@@ -75,19 +75,19 @@ namespace Serializer
             return numberOfFiles;
         }
 
-        private void btnFirst_MouseClick(object sender, MouseEventArgs e)
+        private void BtnFirst_MouseClick(object sender, MouseEventArgs e)
         {
             actSerNum = 1;
             RefreshForm(actSerNum);
         }
 
-        private void btnLast_MouseClick(object sender, MouseEventArgs e)
+        private void BtnLast_MouseClick(object sender, MouseEventArgs e)
         {
             actSerNum = GetLatestSerialNo();
             RefreshForm(actSerNum);
         }
 
-        private void btnNext_MouseClick(object sender, MouseEventArgs e)
+        private void BtnNext_MouseClick(object sender, MouseEventArgs e)
         {
             if(actSerNum == GetLatestSerialNo())
             {
@@ -100,7 +100,7 @@ namespace Serializer
             }            
         }
 
-        private void btnPrevious_MouseClick(object sender, MouseEventArgs e)
+        private void BtnPrevious_MouseClick(object sender, MouseEventArgs e)
         {
             if(actSerNum == 1)
             {

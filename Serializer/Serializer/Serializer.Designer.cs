@@ -104,7 +104,7 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSave_MouseClick);
+            this.btnSave.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BtnSave_MouseClick);
             // 
             // btnPrevious
             // 
@@ -115,7 +115,7 @@
             this.btnPrevious.TabIndex = 7;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
-            this.btnPrevious.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnPrevious_MouseClick);
+            this.btnPrevious.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BtnPrevious_MouseClick);
             // 
             // btnNext
             // 
@@ -126,7 +126,7 @@
             this.btnNext.TabIndex = 8;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnNext_MouseClick);
+            this.btnNext.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BtnNext_MouseClick);
             // 
             // btnFirst
             // 
@@ -137,7 +137,7 @@
             this.btnFirst.TabIndex = 9;
             this.btnFirst.Text = "First";
             this.btnFirst.UseVisualStyleBackColor = true;
-            this.btnFirst.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnFirst_MouseClick);
+            this.btnFirst.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BtnFirst_MouseClick);
             // 
             // btnLast
             // 
@@ -148,7 +148,7 @@
             this.btnLast.TabIndex = 10;
             this.btnLast.Text = "Last";
             this.btnLast.UseVisualStyleBackColor = true;
-            this.btnLast.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnLast_MouseClick);
+            this.btnLast.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BtnLast_MouseClick);
             // 
             // Serializer
             // 
