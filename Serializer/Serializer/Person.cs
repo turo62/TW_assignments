@@ -31,7 +31,7 @@ namespace Serializer
             DateOfRecording = (DateTime)info.GetValue("DateOfRecording", typeof(DateTime));
         }
 
-        public Person(string myName, string myAdress, string myPhone, int serialNumber)
+        public Person(string myName, string myAdress, string myPhone, DateTime actDate, int serialNumber)
         {
             Name = myName;
             Address = myAdress;
