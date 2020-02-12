@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaintSender", "SaintSender\SaintSender.csproj", "{827D2AFD-75C5-422C-8E86-5E37ACB2F903}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{827D2AFD-75C5-422C-8E86-5E37ACB2F903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{827D2AFD-75C5-422C-8E86-5E37ACB2F903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{827D2AFD-75C5-422C-8E86-5E37ACB2F903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{827D2AFD-75C5-422C-8E86-5E37ACB2F903}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA89B6A1-59D4-4D77-96EE-3B4BCF2DE35E}
+	EndGlobalSection
+EndGlobal
